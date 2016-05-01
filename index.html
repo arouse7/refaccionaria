@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AUI</title>
+</head>
+<body>
+	<!-- <div>
+		<p id="texto">sf</p>
+	</div> -->
+
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Today's welcome message is:</p>
+<h1>{{myWelcome}}</h1>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+    $http.get("http://localhost:3000/refacciones")
+    .then(function(response) {
+        $scope.myWelcome = response.data[0].marca;
+    });
+});
+</script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script>
+	$(function(){
+		$.ajax({
+            url: "http://localhost:3000/refacciones",
+            data: "",
+            dataType: "json",
+            type: "GET",
+            contentType: "application/json; chartset=utf-8",
+            success: function () {
+            	console.log("success");
+            },
+            error: function () {
+                alert("Error obteniendo la información.");
+            }
+        }).done(function (data) {
+        	// data.length;
+        	var text = "";
+        	var auto;
+        	for(var i = 0 ; i<data.length; i++){
+        		for (au in data[i]){
+        			text += data[i][au] + " -- ";
+        		}
+        	}
+        	$("#texto").text(text);
+        });//ajax
+	})
+	
+	</script> -->
+</body>
+</html>
