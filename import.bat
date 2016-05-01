@@ -1,1 +1,0 @@
-mongoimport --db aui --collection refacciones --file EjemploDB.json --jsonArray

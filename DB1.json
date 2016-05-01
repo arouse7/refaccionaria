@@ -1,0 +1,150 @@
+[
+	{
+		"marca": "Toyota",
+		"tipo": "Deportivo",
+		"modelo": "Supra",
+		"anho": 1999,
+		"sucursal": "Gonzalez Ortega",
+		"refaccion": [
+			{
+				"nombre": "bugia",
+				"fabricante": "patito 1999",
+				"precio": 99.99,
+				"descripcion": "las mejores bugias de la ciudad",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			},
+			{
+				"nombre": "bugia",
+				"fabricante": "ganso 1999",
+				"precio": 120.99,
+				"descripcion": "las mejores bugias de la region",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "panda 1999",
+				"precio": 400,
+				"descripcion": "frenos que salvan vidas",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "oso hormiguero 1999",
+				"precio": 400,
+				"descripcion": "frenos que salvan tu auto",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			}
+		]
+	},
+	{
+		"marca": "Nissan",
+		"tipo": "Deportivo",
+		"modelo": "Skylan",
+		"anho": 2000,
+		"sucursal": "Gonzalez Ortega",
+		"refaccion": [
+			{
+				"nombre": "bugia",
+				"fabricante": "patito 2000",
+				"precio": 99.99,
+				"descripcion": "las mejores bugias de la ciudad",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			},
+			{
+				"nombre": "bugia",
+				"fabricante": "ganso 2000",
+				"precio": 120.99,
+				"descripcion": "las mejores bugias de la region",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "panda 2000",
+				"precio": 400,
+				"descripcion": "frenos que salvan vidas",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "oso hormiguero 2000",
+				"precio": 400,
+				"descripcion": "frenos que salvan tu auto",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			}
+		]
+	},
+	{
+		"marca": "Dodge",
+		"tipo": "Deportivo",
+		"modelo": "Viper",
+		"anho": 2001,
+		"sucursal": "Gonzalez Ortega",
+		"refaccion": [
+			{
+				"nombre": "bugia",
+				"fabricante": "patito 2001",
+				"precio": 99.99,
+				"descripcion": "las mejores bugias de la ciudad",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			},
+			{
+				"nombre": "bugia",
+				"fabricante": "ganso 2001",
+				"precio": 120.99,
+				"descripcion": "las mejores bugias de la region",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "panda 2001",
+				"precio": 400,
+				"descripcion": "frenos que salvan vidas",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "oso hormiguero 2001",
+				"precio": 400,
+				"descripcion": "frenos que salvan tu auto",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			}
+		]
+	},
+	{
+		"marca": "Ford",
+		"tipo": "Deportivo",
+		"modelo": "Mustang",
+		"anho": 2002,
+		"sucursal": "Gonzalez Ortega",
+		"refaccion": [
+			{
+				"nombre": "bugia",
+				"fabricante": "patito 2002",
+				"precio": 99.99,
+				"descripcion": "las mejores bugias de la ciudad",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			},
+			{
+				"nombre": "bugia",
+				"fabricante": "ganso 2002",
+				"precio": 120.99,
+				"descripcion": "las mejores bugias de la region",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "panda 2002",
+				"precio": 400,
+				"descripcion": "frenos que salvan vidas",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "oso hormiguero 2002",
+				"precio": 400,
+				"descripcion": "frenos que salvan tu auto",
+				"garantia": "en tienda 3 meses, fabricante de por vida"
+			}
+		]
+	}
+]
