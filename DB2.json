@@ -77,7 +77,7 @@
 				"precio": 400,
 				"descripcion": "frenos que salvan tu auto",
 				"garantia": "en tienda 3 meses, fabricante de por vida",
-				"existencia": 7
+				"existencia": 72
 			}
 		]
 	},
@@ -94,7 +94,7 @@
 				"precio": 99.99,
 				"descripcion": "las mejores bugias de la ciudad",
 				"garantia": "en tienda 3 meses, fabricante de por vida",
-				"existencia": 3
+				"existencia": 32
 			},
 			{
 				"nombre": "bugia",
@@ -102,7 +102,7 @@
 				"precio": 120.99,
 				"descripcion": "las mejores bugias de la region",
 				"garantia": "en tienda 3 meses, fabricante de por vida",
-				"existencia": 1
+				"existencia": 12
 			},
 			{
 				"nombre": "frenos",
@@ -110,7 +110,7 @@
 				"precio": 400,
 				"descripcion": "frenos que salvan vidas",
 				"garantia": "en tienda 3 meses, fabricante de por vida",
-				"existencia": 2
+				"existencia": 22
 			},
 			{
 				"nombre": "frenos",
@@ -118,7 +118,7 @@
 				"precio": 400,
 				"descripcion": "frenos que salvan tu auto",
 				"garantia": "en tienda 3 meses, fabricante de por vida",
-				"existencia": 6
+				"existencia": 62
 			}
 		]
 	},
