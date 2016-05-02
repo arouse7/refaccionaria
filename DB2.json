@@ -1,0 +1,166 @@
+[
+	{
+		"marca": "Toyota",
+		"tipo": "Deportivo",
+		"modelo": "Supra",
+		"anho": 1999,
+		"sucursal": "Gonzalez Ortega",
+		"refaccion": [
+			{
+				"nombre": "bugia",
+				"fabricante": "a",
+				"precio": 99.99,
+				"descripcion": "las mejores bugias de la ciudad",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 10
+			},
+			{
+				"nombre": "bugia",
+				"fabricante": "b",
+				"precio": 120.99,
+				"descripcion": "las mejores bugias de la region",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 15				
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "c",
+				"precio": 400,
+				"descripcion": "frenos que salvan vidas",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 5
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "d",
+				"precio": 400,
+				"descripcion": "frenos que salvan tu auto",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 9
+			}
+		]
+	},
+	{
+		"marca": "Nissan",
+		"tipo": "Deportivo",
+		"modelo": "Skylan",
+		"anho": 2000,
+		"sucursal": "Gonzalez Ortega",
+		"refaccion": [
+			{
+				"nombre": "bugia",
+				"fabricante": "aa",
+				"precio": 99.99,
+				"descripcion": "las mejores bugias de la ciudad",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 4
+			},
+			{
+				"nombre": "bugia",
+				"fabricante": "bb",
+				"precio": 120.99,
+				"descripcion": "las mejores bugias de la region",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 9
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "cc",
+				"precio": 400,
+				"descripcion": "frenos que salvan vidas",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 11
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "dd",
+				"precio": 400,
+				"descripcion": "frenos que salvan tu auto",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 7
+			}
+		]
+	},
+	{
+		"marca": "Dodge",
+		"tipo": "Deportivo",
+		"modelo": "Viper",
+		"anho": 2001,
+		"sucursal": "Gonzalez Ortega",
+		"refaccion": [
+			{
+				"nombre": "bugia",
+				"fabricante": "aaa",
+				"precio": 99.99,
+				"descripcion": "las mejores bugias de la ciudad",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 3
+			},
+			{
+				"nombre": "bugia",
+				"fabricante": "bbb",
+				"precio": 120.99,
+				"descripcion": "las mejores bugias de la region",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 1
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "ccc",
+				"precio": 400,
+				"descripcion": "frenos que salvan vidas",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 2
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "ddd",
+				"precio": 400,
+				"descripcion": "frenos que salvan tu auto",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 6
+			}
+		]
+	},
+	{
+		"marca": "Ford",
+		"tipo": "Deportivo",
+		"modelo": "Mustang",
+		"anho": 2002,
+		"sucursal": "Gonzalez Ortega",
+		"refaccion": [
+			{
+				"nombre": "bugia",
+				"fabricante": "aaaa",
+				"precio": 99.99,
+				"descripcion": "las mejores bugias de la ciudad",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 4
+			},
+			{
+				"nombre": "bugia",
+				"fabricante": "bbbb",
+				"precio": 120.99,
+				"descripcion": "las mejores bugias de la region",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 15
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "cccc",
+				"precio": 400,
+				"descripcion": "frenos que salvan vidas",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 8
+			},
+			{
+				"nombre": "frenos",
+				"fabricante": "dddd",
+				"precio": 400,
+				"descripcion": "frenos que salvan tu auto",
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 1
+			}
+		]
+	}
+]
