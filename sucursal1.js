@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 
 app.use(morgan('dev'));
 
-mongoose.connect('mongodb://localhost/aui');
+mongoose.connect('mongodb://localhost/sucursal1');
 
 mongoose.connection.on('error', console.error.bind(console, 'Error en mongno'));
 

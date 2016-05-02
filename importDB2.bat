@@ -1,1 +1,1 @@
-mongoimport --db aui --collection refacciones --file DB2.json --jsonArray
+mongoimport --db sucursal2 --collection refacciones --file DB2.json --jsonArray
