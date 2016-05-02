@@ -11,28 +11,32 @@
 				"fabricante": "patito 1999",
 				"precio": 99.99,
 				"descripcion": "las mejores bugias de la ciudad",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 10
 			},
 			{
 				"nombre": "bugia",
 				"fabricante": "ganso 1999",
 				"precio": 120.99,
 				"descripcion": "las mejores bugias de la region",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 15				
 			},
 			{
 				"nombre": "frenos",
 				"fabricante": "panda 1999",
 				"precio": 400,
 				"descripcion": "frenos que salvan vidas",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 5
 			},
 			{
 				"nombre": "frenos",
 				"fabricante": "oso hormiguero 1999",
 				"precio": 400,
 				"descripcion": "frenos que salvan tu auto",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 9
 			}
 		]
 	},
@@ -48,28 +52,32 @@
 				"fabricante": "patito 2000",
 				"precio": 99.99,
 				"descripcion": "las mejores bugias de la ciudad",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 4
 			},
 			{
 				"nombre": "bugia",
 				"fabricante": "ganso 2000",
 				"precio": 120.99,
 				"descripcion": "las mejores bugias de la region",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 9
 			},
 			{
 				"nombre": "frenos",
 				"fabricante": "panda 2000",
 				"precio": 400,
 				"descripcion": "frenos que salvan vidas",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 11
 			},
 			{
 				"nombre": "frenos",
 				"fabricante": "oso hormiguero 2000",
 				"precio": 400,
 				"descripcion": "frenos que salvan tu auto",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 7
 			}
 		]
 	},
@@ -85,28 +93,32 @@
 				"fabricante": "patito 2001",
 				"precio": 99.99,
 				"descripcion": "las mejores bugias de la ciudad",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 3
 			},
 			{
 				"nombre": "bugia",
 				"fabricante": "ganso 2001",
 				"precio": 120.99,
 				"descripcion": "las mejores bugias de la region",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 1
 			},
 			{
 				"nombre": "frenos",
 				"fabricante": "panda 2001",
 				"precio": 400,
 				"descripcion": "frenos que salvan vidas",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 2
 			},
 			{
 				"nombre": "frenos",
 				"fabricante": "oso hormiguero 2001",
 				"precio": 400,
 				"descripcion": "frenos que salvan tu auto",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 6
 			}
 		]
 	},
@@ -122,28 +134,32 @@
 				"fabricante": "patito 2002",
 				"precio": 99.99,
 				"descripcion": "las mejores bugias de la ciudad",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 4
 			},
 			{
 				"nombre": "bugia",
 				"fabricante": "ganso 2002",
 				"precio": 120.99,
 				"descripcion": "las mejores bugias de la region",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 15
 			},
 			{
 				"nombre": "frenos",
 				"fabricante": "panda 2002",
 				"precio": 400,
 				"descripcion": "frenos que salvan vidas",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 8
 			},
 			{
 				"nombre": "frenos",
 				"fabricante": "oso hormiguero 2002",
 				"precio": 400,
 				"descripcion": "frenos que salvan tu auto",
-				"garantia": "en tienda 3 meses, fabricante de por vida"
+				"garantia": "en tienda 3 meses, fabricante de por vida",
+				"existencia": 1
 			}
 		]
 	}
