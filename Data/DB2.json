@@ -4,7 +4,7 @@
 		"tipo": "Deportivo",
 		"modelo": "Supra",
 		"anho": 1999,
-		"sucursal": "Gonzalez Ortega",
+		"sucursal": "Castellón",
 		"refaccion": [
 			{
 				"nombre": "bugia",
@@ -45,7 +45,7 @@
 		"tipo": "Deportivo",
 		"modelo": "Skylan",
 		"anho": 2000,
-		"sucursal": "Gonzalez Ortega",
+		"sucursal": "Castellón",
 		"refaccion": [
 			{
 				"nombre": "bugia",
@@ -86,7 +86,7 @@
 		"tipo": "Deportivo",
 		"modelo": "Viper",
 		"anho": 2001,
-		"sucursal": "Gonzalez Ortega",
+		"sucursal": "Castellón",
 		"refaccion": [
 			{
 				"nombre": "bugia",
@@ -127,7 +127,7 @@
 		"tipo": "Deportivo",
 		"modelo": "Mustang",
 		"anho": 2002,
-		"sucursal": "Gonzalez Ortega",
+		"sucursal": "Castellón",
 		"refaccion": [
 			{
 				"nombre": "bugia",

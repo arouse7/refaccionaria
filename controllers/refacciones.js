@@ -19,7 +19,8 @@ exports.find = function (req, res) {
                         $eq: ['$$ref.nombre', req.query['refaccion.nombre']]
                     }
                 }
-            }
+            },
+            sucursal: 1
         }
     };
     Refaccion.aggregate([{ $match: req.query }, projection], function (err, refactions) {

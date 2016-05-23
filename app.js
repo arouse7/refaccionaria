@@ -48,7 +48,7 @@ app.get('/refacciones', function (req, res) {
          */
         function (err, results) {
             if (err) { console.log(err); res.send(500, "Server Error"); return; }
-            res.send({ api1: results[0], api2: results[1] });
+            res.send({ suc1: results[0], suc2: results[1] });
         }
     );
 });

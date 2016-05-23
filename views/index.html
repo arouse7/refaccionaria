@@ -1,59 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>AUI</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:500italic' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Refaccionarias La Comercial</title>
 </head>
+
 <body>
-	<!-- <div>
-		<p id="texto">sf</p>
-	</div> -->
+    <div class="container">
+        <header class="row banner">
+            <div class="col-sm-2">
+                <img id="imgLogo" class="img-responsive" src="../img/logo.png" />
+            </div>
+            <div class="col-sm-8">
+                <hgroup>
+                    <h1>REFACCIONARIAS</h1>
+                    <h2>LA COMERCIAL</h2>
+                </hgroup>
+            </div>
+            <div class="col-sm-2">
+                <img id="imgLogo" class="img-responsive" src="../img/logo2.png" />
+            </div>
+        </header>
+    </div>
+
+    <div class="container mainContent">
+        <div class="sectionHeader row">
+            <div class="col-sm-12">
+                <h3>CONSULTA DE REFACCIONES</h3>
+
+            </div>
+        </div>
+
+            <form class="form-group form-inline">
+                <label for="marca">Marca:</label>
+                <select id="marca" class="form-control marginRight">
+                    <option value="Toyota">Toyota</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Dodge">Dodge</option>
+                    <option value="Ford">Ford</option>
+                </select>
+
+                <label for="tipo">Tipo:</label>
+                <select id="tipo" class="form-control marginRight">
+                    <option value="Deportivo">Deportivo</option>
+                    <option value="Sedan">Sedán</option>
+                </select>
+
+                <label for="modelo">Modelo:</label>
+                <select id="modelo" class="form-control marginRight">
+                    <option value="Supra">Supra</option>
+                    <option value="Skylan">Skylan</option>
+                    <option value="Viper">Viper</option>
+                    <option value="Mustang">Mustang</option>
+                </select>
+
+                <label for="refaccion">Refacción:</label>
+                <select id="refaccion" class="form-control marginRight">
+                    <option value="bugia">Bugia</option>
+                    <option value="Frenos">Frenos</option>
+                </select>
+                
+                <label for="consultaLocal" class="marginRight">
+                    <input id="consultaLocal" type="checkbox" name="" value="" > Local
+                </label>
+
+                <input type="submit" class="btn btn-danger" value="Buscar" />
+            </form>
 
 
-<div ng-app="myApp" ng-controller="myCtrl"> 
+        <div id="table_div"></div>
 
-<p>Today's welcome message is:</p>
-<h1>{{myWelcome}}</h1>
+    </div>
 
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-<script>
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope, $http) {
-    $http.get("http://localhost:3000/refacciones")
-    .then(function(response) {
-        $scope.myWelcome = response.data[0].marca;
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        var URL_LOCAL = "http://localhost:3000/refacciones";
+var URL_GLOBAL = "http://localhost:3007/refacciones";
+    
+//var parametros;
+
+google.charts.load('current', {'packages':['table']});
+
+$(document).ready(function () {
+    var esLocal;
+    
+    var auto = {
+        marca: '',
+        tipo: '',
+        modelo: '',
+        refaccion: {
+            nombre: ''
+        }
+    };
+    
+    $("form").on("submit", function(e) {
+        e.preventDefault();
+
+        auto.marca = $("#marca").val();
+        auto.tipo = $("#tipo").val();
+        auto.modelo = $("#modelo").val();
+        esLocal = $("#consultaLocal").is(":checked");
+        auto.refaccion.nombre = $("#refaccion").val();
+        
+        peticionAjax();
     });
-});
-</script>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script>
-	$(function(){
-		$.ajax({
-            url: "http://localhost:3000/refacciones",
-            data: "",
+
+    function peticionAjax() {
+        $.ajax({
+            url: (esLocal) ? URL_LOCAL : URL_GLOBAL,
+            data: {marca: auto.marca, tipo: auto.tipo, modelo: auto.modelo, "refaccion.nombre": auto.refaccion.nombre},
             dataType: "json",
             type: "GET",
             contentType: "application/json; chartset=utf-8",
             success: function () {
-            	console.log("success");
+                console.log("success");
             },
             error: function () {
                 alert("Error obteniendo la información.");
             }
-        }).done(function (data) {
-        	// data.length;
-        	var text = "";
-        	var auto;
-        	for(var i = 0 ; i<data.length; i++){
-        		for (au in data[i]){
-        			text += data[i][au] + " -- ";
-        		}
-        	}
-        	$("#texto").text(text);
+        }).done(function (response) {
+
+            //Convertir la respuesta a un array
+            var sucursales = Object.keys(response).map(function (key) {return response[key]});
+            drawTable(sucursales);
+
         });//ajax
-	})
-	
-	</script> -->
+    }
+    
+    
+    function drawTable(sucursales) {
+        
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Nombre');
+        data.addColumn('string', 'Fabricante');
+        data.addColumn('number', 'Precio');
+        data.addColumn('string', 'Descripción');
+        data.addColumn('string', 'Garantía');
+        data.addColumn('number', 'Existencia');
+        data.addColumn('string', 'Sucursal');
+
+        if(esLocal) {
+            var sucursal = sucursales;
+            for(var j = 0; j < sucursal.length; j++) {
+                var refaccion = sucursal[j].refaccion;
+                var nombreSucursal = sucursal[j].sucursal;
+               for(var k = 0; k < (refaccion.length); k++) {
+                data.addRow(["" + refaccion[k].nombre + "",
+                    "" + refaccion[k].fabricante + "",
+                    refaccion[k].precio,
+                    "" + refaccion[k].descripcion + "",
+                    "" + refaccion[k].garantia + "",
+                    refaccion[k].existencia,
+                    "" + nombreSucursal + ""]);
+               }
+            }
+            
+        } else {
+            for (var i = 0; i < sucursales.length; i++) {
+                var sucursal = sucursales[i];
+                for(var j = 0; j < sucursal.length; j++) {
+                    var refaccion = sucursal[j].refaccion;
+                    var nombreSucursal = sucursal[j].sucursal;
+                   for(var k = 0; k < (refaccion.length); k++) {
+                    data.addRow(["" + refaccion[k].nombre + "",
+                        "" + refaccion[k].fabricante + "",
+                        refaccion[k].precio,
+                        "" + refaccion[k].descripcion + "",
+                        "" + refaccion[k].garantia + "",
+                        refaccion[k].existencia,
+                        "" + nombreSucursal + ""]);
+                   }
+                }
+            }
+        }
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+    }
+
+    
+    google.charts.setOnLoadCallback(drawTable);
+});
+    </script>
 </body>
+
 </html>
