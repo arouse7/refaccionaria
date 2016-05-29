@@ -38,41 +38,41 @@
             </div>
         </div>
 
-            <form class="form-group form-inline">
-                <label for="marca">Marca:</label>
-                <select id="marca" class="form-control marginRight">
+        <form class="form-group form-inline">
+            <label for="marca">Marca:</label>
+            <select id="marca" class="form-control marginRight">
                     <option value="Toyota">Toyota</option>
                     <option value="Nissan">Nissan</option>
                     <option value="Dodge">Dodge</option>
                     <option value="Ford">Ford</option>
                 </select>
 
-                <label for="tipo">Tipo:</label>
-                <select id="tipo" class="form-control marginRight">
+            <label for="tipo">Tipo:</label>
+            <select id="tipo" class="form-control marginRight">
                     <option value="Deportivo">Deportivo</option>
                     <option value="Sedan">Sedán</option>
                 </select>
 
-                <label for="modelo">Modelo:</label>
-                <select id="modelo" class="form-control marginRight">
+            <label for="modelo">Modelo:</label>
+            <select id="modelo" class="form-control marginRight">
                     <option value="Supra">Supra</option>
                     <option value="Skylan">Skylan</option>
                     <option value="Viper">Viper</option>
                     <option value="Mustang">Mustang</option>
                 </select>
 
-                <label for="refaccion">Refacción:</label>
-                <select id="refaccion" class="form-control marginRight">
+            <label for="refaccion">Refacción:</label>
+            <select id="refaccion" class="form-control marginRight">
                     <option value="bugia">Bugia</option>
                     <option value="frenos">Frenos</option>
                 </select>
-                
-                <label for="consultaLocal" class="marginRight">
+
+            <label for="consultaLocal" class="marginRight">
                     <input id="consultaLocal" type="checkbox" name="" value="" > Local
                 </label>
 
-                <input type="submit" class="btn btn-danger" value="Buscar" />
-            </form>
+            <input type="submit" class="btn btn-danger" value="Buscar" />
+        </form>
 
 
         <div id="table_div"></div>
@@ -81,117 +81,149 @@
 
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
     <script>
         var URL_LOCAL = "http://localhost:3000/refacciones";
-var URL_GLOBAL = "http://localhost:3007/refacciones";
-    
-//var parametros;
+    var URL_GLOBAL = "http://localhost:3007/refacciones";
+    var table;
+    var data;
 
-google.charts.load('current', {'packages':['table']});
+    google.charts.load('current', {'packages':['table']});
 
-$(document).ready(function () {
-    var esLocal;
-    
-    var auto = {
-        marca: '',
-        tipo: '',
-        modelo: '',
-        refaccion: {
-            nombre: ''
-        }
-    };
-    
-    $("form").on("submit", function(e) {
-        e.preventDefault();
-
-        auto.marca = $("#marca").val();
-        auto.tipo = $("#tipo").val();
-        auto.modelo = $("#modelo").val();
-        esLocal = $("#consultaLocal").is(":checked");
-        auto.refaccion.nombre = $("#refaccion").val();
+    $(document).ready(function () {
+        var esLocal;
         
-        peticionAjax();
-    });
-
-    function peticionAjax() {
-        $.ajax({
-            url: (esLocal) ? URL_LOCAL : URL_GLOBAL,
-            data: {marca: auto.marca, tipo: auto.tipo, modelo: auto.modelo, "refaccion.nombre": auto.refaccion.nombre},
-            dataType: "json",
-            type: "GET",
-            contentType: "application/json; chartset=utf-8",
-            success: function () {
-                console.log("success");
-            },
-            error: function () {
-                alert("Error obteniendo la información.");
+        var auto = {
+            marca: '',
+            tipo: '',
+            modelo: '',
+            refaccion: {
+                nombre: ''
             }
-        }).done(function (response) {
-
-            //Convertir la respuesta a un array
-            var sucursales = Object.keys(response).map(function (key) {return response[key]});
-            drawTable(sucursales);
-
-        });//ajax
-    }
-    
-    
-    function drawTable(sucursales) {
+        };
         
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Nombre');
-        data.addColumn('string', 'Fabricante');
-        data.addColumn('number', 'Precio');
-        data.addColumn('string', 'Descripción');
-        data.addColumn('string', 'Garantía');
-        data.addColumn('number', 'Existencia');
-        data.addColumn('string', 'Sucursal');
+        $("form").on("submit", function(e) {
+            e.preventDefault();
 
-        if(esLocal) {
-            var sucursal = sucursales;
-            for(var j = 0; j < sucursal.length; j++) {
-                var refaccion = sucursal[j].refaccion;
-                var nombreSucursal = sucursal[j].sucursal;
-               for(var k = 0; k < (refaccion.length); k++) {
-                data.addRow(["" + refaccion[k].nombre + "",
-                    "" + refaccion[k].fabricante + "",
-                    refaccion[k].precio,
-                    "" + refaccion[k].descripcion + "",
-                    "" + refaccion[k].garantia + "",
-                    refaccion[k].existencia,
-                    "" + nombreSucursal + ""]);
-               }
-            }
+            auto.marca = $("#marca").val();
+            auto.tipo = $("#tipo").val();
+            auto.modelo = $("#modelo").val();
+            esLocal = $("#consultaLocal").is(":checked");
+            auto.refaccion.nombre = $("#refaccion").val();
             
-        } else {
-            for (var i = 0; i < sucursales.length; i++) {
-                var sucursal = sucursales[i];
+            peticionAjax();
+        });
+
+        function peticionAjax() {
+            $.ajax({
+                url: (esLocal) ? URL_LOCAL : URL_GLOBAL,
+                data: {marca: auto.marca, tipo: auto.tipo, modelo: auto.modelo, "refaccion.nombre": auto.refaccion.nombre},
+                dataType: "json",
+                type: "GET",
+                contentType: "application/json; chartset=utf-8",
+                success: function () {
+                    console.log("success");
+                },
+                error: function () {
+                    alert("Error obteniendo la información.");
+                }
+            }).done(function (response) {
+
+                //Convertir la respuesta a un array
+                var sucursales = Object.keys(response).map(function (key) {return response[key]});
+                drawTable(sucursales);
+
+            });//ajax
+        }
+        
+        
+        
+        function drawTable(sucursales) {
+            
+            data = new google.visualization.DataTable();
+            data.addColumn('string', 'Nombre');
+            data.addColumn('string', 'Fabricante');
+            data.addColumn('number', 'Precio');
+            data.addColumn('string', 'Descripción');
+            data.addColumn('string', 'Garantía');
+            data.addColumn('number', 'Existencia');
+            data.addColumn('string', 'Sucursal');
+            data.addColumn('string', 'Ordenar');
+
+            if(esLocal) {
+                var sucursal = sucursales;
                 for(var j = 0; j < sucursal.length; j++) {
                     var refaccion = sucursal[j].refaccion;
                     var nombreSucursal = sucursal[j].sucursal;
-                   for(var k = 0; k < (refaccion.length); k++) {
+                for(var k = 0; k < (refaccion.length); k++) {
                     data.addRow(["" + refaccion[k].nombre + "",
                         "" + refaccion[k].fabricante + "",
                         refaccion[k].precio,
                         "" + refaccion[k].descripcion + "",
                         "" + refaccion[k].garantia + "",
                         refaccion[k].existencia,
-                        "" + nombreSucursal + ""]);
-                   }
+                        "" + nombreSucursal + "",
+                        '<button onclick="ordenar()" >Ordenar</button> ']);
+                }
+                }
+                
+            } else {
+                for (var i = 0; i < sucursales.length; i++) {
+                    var sucursal = sucursales[i];
+                    for(var j = 0; j < sucursal.length; j++) {
+                        var refaccion = sucursal[j].refaccion;
+                        var nombreSucursal = sucursal[j].sucursal;
+                    for(var k = 0; k < (refaccion.length); k++) {
+                        data.addRow(["" + refaccion[k].nombre + "",
+                            "" + refaccion[k].fabricante + "",
+                            refaccion[k].precio,
+                            "" + refaccion[k].descripcion + "",
+                            "" + refaccion[k].garantia + "",
+                            refaccion[k].existencia,
+                            "" + nombreSucursal + "",
+                        '<button onclick="ordenar()" >Ordenar</button> ']);
+                    }
+                    }
                 }
             }
+
+            table = new google.visualization.Table(document.getElementById('table_div'));
+            table.draw(data, {showRowNumber: true, width: '100%', height: '100%', allowHtml: true});
+            
+           
+                
         }
+        
+        google.charts.setOnLoadCallback(drawTable);
+    });
 
-        var table = new google.visualization.Table(document.getElementById('table_div'));
-        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+    function ordenar() {
+        var selection = table.getSelection();
+        var item = selection[0];
+        
+        var ref = { 
+            marca: '', 
+            tipo: '', 
+            modelo: '', 
+            refaccion: { 
+                nombre: '',
+                fabricante: '',
+                existencia: 0 
+            } 
+        };
+        
+        ref.marca = $("#marca").val();
+        ref.tipo = $("#tipo").val();
+        ref.modelo = $("#modelo").val();
+        ref.refaccion.nombre = $("#refaccion").val();
+        ref.refaccion.fabricante = data.getFormattedValue(item.row, 1);
+        ref.refaccion.existencia = data.getFormattedValue(item.row, 5);
+        
+        alert(JSON.stringify(ref));
     }
-
-    
-    google.charts.setOnLoadCallback(drawTable);
-});
     </script>
 </body>
 
