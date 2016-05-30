@@ -88,12 +88,15 @@
     <script>
         var URL_LOCAL = "http://localhost:3000/refacciones";
     var URL_GLOBAL = "http://localhost:3007/refacciones";
+    var SUC1 = 'http://localhost:3007/sucursal1';
+    var SUC2 = 'http://localhost:3007/sucursal2';
+
     var table;
     var data;
 
     google.charts.load('current', {'packages':['table']});
 
-    $(document).ready(function () {
+    // $(document).ready(function () {
         var esLocal;
         
         var auto = {
@@ -152,13 +155,14 @@
             data.addColumn('number', 'Existencia');
             data.addColumn('string', 'Sucursal');
             data.addColumn('string', 'Ordenar');
-
+            
+            var x = 0;
             if(esLocal) {
                 var sucursal = sucursales;
                 for(var j = 0; j < sucursal.length; j++) {
                     var refaccion = sucursal[j].refaccion;
                     var nombreSucursal = sucursal[j].sucursal;
-                for(var k = 0; k < (refaccion.length); k++) {
+                for(var k = 0; k < (refaccion.length); k++, x++) {
                     data.addRow(["" + refaccion[k].nombre + "",
                         "" + refaccion[k].fabricante + "",
                         refaccion[k].precio,
@@ -166,7 +170,7 @@
                         "" + refaccion[k].garantia + "",
                         refaccion[k].existencia,
                         "" + nombreSucursal + "",
-                        '<button onclick="ordenar()" >Ordenar</button> ']);
+                        '<button onclick="ordenar(\'' + x + '\')" >Ordenar</button> ']);
                 }
                 }
                 
@@ -176,7 +180,7 @@
                     for(var j = 0; j < sucursal.length; j++) {
                         var refaccion = sucursal[j].refaccion;
                         var nombreSucursal = sucursal[j].sucursal;
-                    for(var k = 0; k < (refaccion.length); k++) {
+                    for(var k = 0; k < (refaccion.length); k++, x++) {
                         data.addRow(["" + refaccion[k].nombre + "",
                             "" + refaccion[k].fabricante + "",
                             refaccion[k].precio,
@@ -184,7 +188,7 @@
                             "" + refaccion[k].garantia + "",
                             refaccion[k].existencia,
                             "" + nombreSucursal + "",
-                        '<button onclick="ordenar()" >Ordenar</button> ']);
+                        '<button onclick="ordenar(\'' + x + '\')" >Ordenar</button> ']);
                     }
                     }
                 }
@@ -198,16 +202,16 @@
         }
         
         google.charts.setOnLoadCallback(drawTable);
-    });
+    // });
 
-    function ordenar() {
+    function ordenar(i) {
         var selection = table.getSelection();
         var item = selection[0];
-        
         var ref = { 
             marca: '', 
             tipo: '', 
-            modelo: '', 
+            modelo: '',
+            sucursal: '', 
             refaccion: { 
                 nombre: '',
                 fabricante: '',
@@ -219,11 +223,31 @@
         ref.tipo = $("#tipo").val();
         ref.modelo = $("#modelo").val();
         ref.refaccion.nombre = $("#refaccion").val();
-        ref.refaccion.fabricante = data.getFormattedValue(item.row, 1);
-        ref.refaccion.existencia = data.getFormattedValue(item.row, 5);
-        
+        ref.refaccion.fabricante = data.getFormattedValue(Number(i), 1);
+        ref.refaccion.existencia = data.getFormattedValue(Number(i), 5);
+        ref.sucursal = data.getFormattedValue(Number(i), 6);
         alert(JSON.stringify(ref));
+        if(Number(ref.refaccion.existencia) != 0) {
+            modificar(ref);
+        }
+        
     }
+    
+    function modificar(auto) {
+        var url = auto.sucursal === 'Castellón' ? SUC2 : SUC1;
+        alert(url);
+        $.post(  url,{
+                    marca: auto.marca, 
+                    tipo: auto.tipo, 
+                    modelo: auto.modelo, 
+                    "refaccion.nombre": auto.refaccion.nombre,
+                    "refaccion.fabricante": auto.refaccion.fabricante,
+                    "refaccion.existencia": auto.refaccion.existencia
+                }, function(data){
+                    peticionAjax();
+                });
+            
+        }
     </script>
 </body>
 

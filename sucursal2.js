@@ -10,6 +10,10 @@ mongoose.connect('mongodb://localhost/sucursal2');
 
 mongoose.connection.on('error', console.error.bind(console, 'Error en mongno'));
 
+//mongodb para el update
+var expressMongoDb = require('express-mongo-db');
+app.use(expressMongoDb('mongodb://localhost/sucursal2'));
+
 //Se carga el modelo y se crea el controlador
 var model = require('./models/refaccion')(app, mongoose);
 var refCtrl = require('./controllers/refacciones');
@@ -28,6 +32,8 @@ app.use(function(req, res, next) {
 });
 
 app.get('/refacciones', refCtrl.find);
+
+app.post('/sucursal2', refCtrl.update);
 
 app.listen(3001, function () {
   console.log("Servidor iniciado en el puerto 3001");
