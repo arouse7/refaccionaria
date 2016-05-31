@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recibo</title>
+</head>
+<body onload="imprimir()">
+    <script>
+        var cliente;
+        function imprimir(){ 
+            document.write(JSON.stringify(cliente));
+            windows.print(); 
+        }
+    </script>
+</body>
+</html>

@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../img/favicon.png">
-    <link rel="stylesheet" type="text/css" href="../styles/styles.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:500italic' rel='stylesheet' type='text/css'>
+    <link rel="icon" href="img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href='css/fonts.css' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Refaccionarias La Comercial</title>
@@ -16,7 +16,7 @@
     <div class="container">
         <header class="row banner">
             <div class="col-sm-2">
-                <img id="imgLogo" class="img-responsive" src="../img/logo.png" />
+                <img id="imgLogo" class="img-responsive" src="img/logo.png" />
             </div>
             <div class="col-sm-8">
                 <hgroup>
@@ -25,7 +25,7 @@
                 </hgroup>
             </div>
             <div class="col-sm-2">
-                <img id="imgLogo" class="img-responsive" src="../img/logo2.png" />
+                <img id="imgLogo" class="img-responsive" src="img/logo2.png" />
             </div>
         </header>
     </div>
@@ -63,7 +63,7 @@
 
             <label for="refaccion">Refacción:</label>
             <select id="refaccion" class="form-control marginRight">
-                    <option value="bugia">Bugia</option>
+                    <option value="bujia">Bujía</option>
                     <option value="frenos">Frenos</option>
                 </select>
 
@@ -78,18 +78,38 @@
         <div id="table_div"></div>
 
     </div>
+<!--display: none; -->
+<div class="container" id="contenedor" style="display: none;position:fixed;bottom:0;">
+    <div class="alert alert-danger" id="alerta">
+        <a href="#" class="close">&times;</a>
+        <strong><p id="mensaje"> </p></strong>.
+    </div>
+</div>
 
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/loader.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
     <script>
-        var URL_LOCAL = "http://localhost:3000/refacciones";
-    var URL_GLOBAL = "http://localhost:3007/refacciones";
-    var SUC1 = 'http://localhost:3007/sucursal1';
-    var SUC2 = 'http://localhost:3007/sucursal2';
+            
+    $(".close").click(function(){
+        $('#contenedor').hide();
+    });
+    // $("#myAlert").on('close.bs.alert', function(){
+    //     alert('The alert message is about to be closed.');
+    // });
+    function mostrarAlert(auto){
+        $('#contenedor').show();
+        $("#alerta").alert();
+        $('#mensaje').text('Marca: ' + auto.marca + ' - ' + 'Modelo: ' + auto.modelo + ' - ' + 
+        'Refacción: ' + auto.refaccion.nombre + ' - ' + 'Precio: ' + auto.refaccion.precio + ' - ' + 
+        'Cliente:  ' + auto.cliente);
+    }    
+        
+    //     var URL_LOCAL = "http://192.168.33.20:3000/refacciones";
+    // var URL_GLOBAL = "http://192.168.33.22:3007/refacciones";
+    var URL_LOCAL = "http://127.0.0.1:3000/refacciones";
+    var URL_GLOBAL = "http://127.0.0.1:3007/refacciones";
 
     var table;
     var data;
@@ -141,8 +161,6 @@
 
             });//ajax
         }
-        
-        
         
         function drawTable(sucursales) {
             
@@ -207,7 +225,8 @@
     function ordenar(i) {
         var selection = table.getSelection();
         var item = selection[0];
-        var ref = { 
+        var ref = {
+            cliente: '', 
             marca: '', 
             tipo: '', 
             modelo: '',
@@ -215,7 +234,8 @@
             refaccion: { 
                 nombre: '',
                 fabricante: '',
-                existencia: 0 
+                existencia: 0,
+                precio: 0 
             } 
         };
         
@@ -223,31 +243,43 @@
         ref.tipo = $("#tipo").val();
         ref.modelo = $("#modelo").val();
         ref.refaccion.nombre = $("#refaccion").val();
+        ref.refaccion.precio = data.getFormattedValue(Number(i), 2);
         ref.refaccion.fabricante = data.getFormattedValue(Number(i), 1);
         ref.refaccion.existencia = data.getFormattedValue(Number(i), 5);
         ref.sucursal = data.getFormattedValue(Number(i), 6);
-        alert(JSON.stringify(ref));
+        // alert(JSON.stringify(ref));
         if(Number(ref.refaccion.existencia) != 0) {
-            modificar(ref);
+            ref.cliente = prompt("Nombre del cliente: ");
+            if(ref.cliente != null) {
+                // modificar(ref);
+                mostrarAlert(ref);
+                imprimirRecibo(ref);
+            }            
         }
-        
     }
     
-    function modificar(auto) {
-        var url = auto.sucursal === 'Castellón' ? SUC2 : SUC1;
-        alert(url);
-        $.post(  url,{
-                    marca: auto.marca, 
-                    tipo: auto.tipo, 
-                    modelo: auto.modelo, 
-                    "refaccion.nombre": auto.refaccion.nombre,
-                    "refaccion.fabricante": auto.refaccion.fabricante,
-                    "refaccion.existencia": auto.refaccion.existencia
-                }, function(data){
-                    peticionAjax();
-                });
-            
-        }
+    function imprimirRecibo(auto) {
+        var str = 'Marca: ' + auto.marca + '<br>' + 'Modelo: ' + auto.modelo + '<br>' + 
+        'Refacción: ' + auto.refaccion.nombre + '<br>' + 'Precio: ' + auto.refaccion.precio + '<br>' + 
+        'Cliente:  ' + auto.cliente;
+        var ventana = window.open("recibo.html", "_blank", '');
+        ventana.document.write(str);
+        ventana.print();         
+    }
+
+    // function modificar(auto) {
+    //     var url = auto.sucursal === 'Castellón' ? SUC2 : SUC1;
+    //     $.post(url ,{
+    //                 marca: auto.marca, 
+    //                 tipo: auto.tipo, 
+    //                 modelo: auto.modelo, 
+    //                 "refaccion.nombre": auto.refaccion.nombre,
+    //                 "refaccion.fabricante": auto.refaccion.fabricante,
+    //                 "refaccion.existencia": auto.refaccion.existencia
+    //             }, function(data){
+    //                 peticionAjax();
+    //             });
+    //     }
     </script>
 </body>
 

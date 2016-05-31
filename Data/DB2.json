@@ -7,18 +7,18 @@
 		"sucursal": "Castellón",
 		"refaccion": [
 			{
-				"nombre": "bugia",
+				"nombre": "bujia",
 				"fabricante": "a",
 				"precio": 99.99,
-				"descripcion": "las mejores bugias de la ciudad",
+				"descripcion": "las mejores bujias de la ciudad",
 				"garantia": "en tienda 3 meses, fabricante de por vida",
 				"existencia": 10
 			},
 			{
-				"nombre": "bugia",
+				"nombre": "bujia",
 				"fabricante": "b",
 				"precio": 120.99,
-				"descripcion": "las mejores bugias de la region",
+				"descripcion": "las mejores bujias de la region",
 				"garantia": "en tienda 3 meses, fabricante de por vida",
 				"existencia": 15				
 			},
@@ -48,18 +48,18 @@
 		"sucursal": "Castellón",
 		"refaccion": [
 			{
-				"nombre": "bugia",
+				"nombre": "bujia",
 				"fabricante": "aa",
 				"precio": 99.99,
-				"descripcion": "las mejores bugias de la ciudad",
+				"descripcion": "las mejores bujias de la ciudad",
 				"garantia": "en tienda 3 meses, fabricante de por vida",
 				"existencia": 4
 			},
 			{
-				"nombre": "bugia",
+				"nombre": "bujia",
 				"fabricante": "bb",
 				"precio": 120.99,
-				"descripcion": "las mejores bugias de la region",
+				"descripcion": "las mejores bujias de la region",
 				"garantia": "en tienda 3 meses, fabricante de por vida",
 				"existencia": 9
 			},
@@ -89,18 +89,18 @@
 		"sucursal": "Castellón",
 		"refaccion": [
 			{
-				"nombre": "bugia",
+				"nombre": "bujia",
 				"fabricante": "aaa",
 				"precio": 99.99,
-				"descripcion": "las mejores bugias de la ciudad",
+				"descripcion": "las mejores bujias de la ciudad",
 				"garantia": "en tienda 3 meses, fabricante de por vida",
 				"existencia": 32
 			},
 			{
-				"nombre": "bugia",
+				"nombre": "bujia",
 				"fabricante": "bbb",
 				"precio": 120.99,
-				"descripcion": "las mejores bugias de la region",
+				"descripcion": "las mejores bujias de la region",
 				"garantia": "en tienda 3 meses, fabricante de por vida",
 				"existencia": 12
 			},
@@ -130,18 +130,18 @@
 		"sucursal": "Castellón",
 		"refaccion": [
 			{
-				"nombre": "bugia",
+				"nombre": "bujia",
 				"fabricante": "aaaa",
 				"precio": 99.99,
-				"descripcion": "las mejores bugias de la ciudad",
+				"descripcion": "las mejores bujias de la ciudad",
 				"garantia": "en tienda 3 meses, fabricante de por vida",
 				"existencia": 4
 			},
 			{
-				"nombre": "bugia",
+				"nombre": "bujia",
 				"fabricante": "bbbb",
 				"precio": 120.99,
-				"descripcion": "las mejores bugias de la region",
+				"descripcion": "las mejores bujias de la region",
 				"garantia": "en tienda 3 meses, fabricante de por vida",
 				"existencia": 15
 			},

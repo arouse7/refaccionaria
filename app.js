@@ -20,6 +20,11 @@ app.use(function (req, res, next) {
     next();
 });
 
+// var sucursal1 = 'http://192.168.33.20:3000';
+// var sucursal2 = 'http://192.168.33.21:3001';
+
+var sucursal1 = 'http://127.0.0.1:3000';
+var sucursal2 = 'http://127.0.0.1:3001';
 
 //Petición get 
 app.get('/refacciones', function (req, res) {
@@ -28,7 +33,7 @@ app.get('/refacciones', function (req, res) {
          * First external endpoint
          */
         function (callback) {
-            var url = 'http://localhost:3000' + req.originalUrl;
+            var url = sucursal1 + req.originalUrl;
             request(url, function (err, response, body) {
                 // JSON body
                 if (err) { console.log(err); callback(true); return; }
@@ -40,7 +45,7 @@ app.get('/refacciones', function (req, res) {
          * Second external endpoint
          */
         function (callback) {
-            var url = 'http://localhost:3001' + req.originalUrl;
+            var url = sucursal2 + req.originalUrl;
             request(url, function (err, response, body) {
                 // JSON body
                 if (err) { console.log(err); callback(true); return; }
@@ -60,7 +65,7 @@ app.get('/refacciones', function (req, res) {
 });
 
 app.post('/sucursal1', function (req, res) {
-    request.post({ url: 'http://localhost:3000' + req.originalUrl, form: req.body }, function (err, response, body) {
+    request.post({ url: sucursal1 + req.originalUrl, form: req.body }, function (err, response, body) {
         // JSON body
         if (err) {
             console.log(err); res.send(500, err.message);
@@ -70,7 +75,7 @@ app.post('/sucursal1', function (req, res) {
 });
 
 app.post('/sucursal2', function (req, res) {
-    request.post({ url: 'http://localhost:3001' + req.originalUrl, form: req.body }, function (err, response, body) {
+    request.post({ url: sucursal2 + req.originalUrl, form: req.body }, function (err, response, body) {
         // JSON body
         if (err) {
             console.log(err); res.send(500, err.message);
